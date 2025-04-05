@@ -8,7 +8,7 @@ import { ProductItemComponent } from "../product-item/product-item.component";
   selector: 'app-product-list',
   imports: [CommonModule, ProductItemComponent],
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+  styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
