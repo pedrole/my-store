@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-product-item',
   imports: [CommonModule, FormsModule],
   templateUrl: './product-item.component.html',
-  styleUrl: './product-item.component.css',
+  styleUrls: ['./product-item.component.css'],
 })
 export class ProductItemComponent {
   @Input() product!: Product;
