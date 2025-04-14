@@ -1,0 +1,17 @@
+<div class="detail-container">
+  <img
+    src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    alt="Product Image" class="img">
+  <div class="detail-item">
+    <h2>{{ product?.name }}</h2>
+    <p>Price: {{ product?.price | currency }}</p>
+    <p>Description: {{ product?.name }}</p>
+
+    <select id="quantity" [(ngModel)]="quantity" class="select-input form-select">
+      <option *ngFor="let qty of [1, 2, 3, 4, 5]" [value]="qty">{{ qty }}</option>
+    </select>
+    <button (click)="addToCart(product, quantity)" class="btn btn-primary d-block mt-2">Add to Cart</button>
+    <a routerLink="/products" class="back-link d-block">Back to Products</a>
+
+  </div>
+</div>
