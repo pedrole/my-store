@@ -21,11 +21,7 @@ export class LoginComponent {
     private auth: AuthService,
     private router: Router
   ) {
-    console.log('LoginComponent initialized with:', {
-      firstname: this.firstname,
-      lastname: this.lastname,
-      password: this.password,
-    });
+
 
   }
 
