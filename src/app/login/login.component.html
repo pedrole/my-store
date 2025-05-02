@@ -1,0 +1,46 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>Login</h2>
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <input type="text" id="firstname" class="form-control" required [(ngModel)]="firstname" name="firstname"
+            #firstnameRef="ngModel">
+          <div *ngIf="firstnameRef.invalid && (firstnameRef.dirty || firstnameRef.touched)" class="alert alert-danger">
+            <div *ngIf="firstnameRef.errors?.['required']">First Name is required.</div>
+            <div *ngIf="firstnameRef.errors?.['minlength']">First Name must be at least 2 characters long.</div>
+            <div *ngIf="firstnameRef.errors?.['maxlength']">First Name cannot be more than 20 characters long.</div>
+            <div *ngIf="firstnameRef.errors?.['pattern']">First Name must contain only letters.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastname">Last Name</label>
+          <input type="text" id="lastname" class="form-control" required [(ngModel)]="lastname" name="lastname"  (ngModelChange)="debugLastName($event)"
+            #lastnameRef="ngModel">
+          <div *ngIf="lastnameRef.invalid && (lastnameRef.dirty || lastnameRef.touched)" class="alert alert-danger">
+            <div *ngIf="lastnameRef.errors?.['required']">Last Name is required.</div>
+            <div *ngIf="lastnameRef.errors?.['minlength']">Last Name must be at least 2 characters long.</div>
+            <div *ngIf="lastnameRef.errors?.['maxlength']">Last Name cannot be more than 20 characters long.</div>
+            <div *ngIf="lastnameRef.errors?.['pattern']">Last Name must contain only letters.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" required [(ngModel)]="password" name="password"
+            #passwordRef="ngModel">
+          <div *ngIf="passwordRef.invalid && (passwordRef.dirty || passwordRef.touched)" class="alert alert-danger">
+            <div *ngIf="passwordRef.errors?.['required']">Password is required.</div>
+            <div *ngIf="passwordRef.errors?.['minlength']">Password must be at least 6 characters long.</div>
+            <div *ngIf="passwordRef.errors?.['maxlength']">Password cannot be more than 20 characters long.</div>
+            <div *ngIf="passwordRef.errors?.['pattern']">Password must contain at least one uppercase letter, one lowercase
+              letter,
+              one number, and one special character.</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
