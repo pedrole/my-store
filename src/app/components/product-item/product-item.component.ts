@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { eventNames } from 'process';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-item',
@@ -12,7 +13,7 @@ import { eventNames } from 'process';
   styleUrls: ['./product-item.component.css'],
 })
 export class ProductItemComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cartService: CartService) {}
   onProductClick(product: Product) {
     console.log('Product clicked:', product);
 
@@ -25,6 +26,14 @@ export class ProductItemComponent {
     console.log('Product added to cart:', product);
 
     event?.stopPropagation();
-    throw new Error('Method not implemented.');
+    this.cartService.addToCart(product.id, quantity).subscribe({
+      next: (response) => {
+        console.log('Product added to cart successfully:', response);
+        alert('Product added to cart successfully');
+      },
+      error: (error) => {
+        console.error('Error adding product to cart:', error);
+      },
+    });
   }
 }
