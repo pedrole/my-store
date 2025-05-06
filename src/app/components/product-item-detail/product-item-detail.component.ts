@@ -14,7 +14,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class ProductItemDetailComponent implements OnInit {
   addToCart(product: Product , quantity: number) {
-      this.cartService.addToCart(product?.id, quantity).subscribe({
+      this.cartService.addToCart(product.id, quantity).subscribe({
         next: (response) => {
           console.log('Product added to cart successfully:', response);
           alert('Product added to cart successfully');
