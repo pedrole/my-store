@@ -4,7 +4,7 @@
   <h2>{{ product.name }}</h2>
   <p>Price: {{ product.price | currency }}</p>
 
-  <select id="quantity" [(ngModel)]="quantity" class="select-input form-select">
+  <select id="quantity" [(ngModel)]="quantity" class="select-input form-select" (click)="$event.stopPropagation()">
     <option *ngFor="let qty of [1, 2, 3, 4, 5]" [value]="qty">{{ qty }}</option>
   </select>
   <button (click)="addToCart(product, quantity)" class="btn btn-primary">Add to Cart</button>
