@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/Product';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-item-detail',
@@ -12,16 +13,25 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./product-item-detail.component.css'],
 })
 export class ProductItemDetailComponent implements OnInit {
-  addToCart(arg0: Product | undefined, arg1: number) {
-    throw new Error('Method not implemented.');
+  addToCart(product: Product , quantity: number) {
+      this.cartService.addToCart(product.id, quantity).subscribe({
+        next: (response) => {
+          console.log('Product added to cart successfully:', response);
+          alert('Product added to cart successfully');
+        },
+        error: (error) => {
+          console.error('Error adding product to cart:', error);
+        },
+      });
   }
 
-  public product: Product | undefined;
+  public product!: Product;
   quantity: number = 1;
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) {
     // Constructor logic if needed
   }
