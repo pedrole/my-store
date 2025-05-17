@@ -45,6 +45,7 @@ export class AuthService {
   logout() {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem(this.tokenKey);
+      localStorage.removeItem('user_id');
     }
   }
 

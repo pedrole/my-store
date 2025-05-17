@@ -26,9 +26,9 @@ export class CartComponent implements OnInit {
       },
     });
   }
-  updateQuantity(_t8: OrderItem) {
+  updateQuantity(item: OrderItem) {
     this.cartService
-      .updateProductQuantity(_t8.product_id, _t8.quantity)
+      .updateProductQuantity(item.product_id, item.quantity)
       .subscribe({
         next: (response) => {
           console.log('Product quantity updated successfully:', response);
