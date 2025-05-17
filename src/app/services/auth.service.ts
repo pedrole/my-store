@@ -51,7 +51,6 @@ export class AuthService {
   isLoggedIn(): boolean {
     if (isPlatformBrowser(this.platformId)) {
       const result = !!localStorage.getItem(this.tokenKey);
-      console.log('isLoggedIn check:', result);
       return result;
     }
     return false;
