@@ -22,20 +22,39 @@ export class AuthService {
     password: string;
   }) {
     return this.http
-      .post<{ token: string }>(`${this.apiUrl}/users/login`, credentials)
+      .post<{
+        id: string;
+        token: string;
+      }>(`${this.apiUrl}/users/login`, credentials)
       .pipe(
         tap((res) => {
           this.setToken(res.token);
+          localStorage.setItem('user_id', res.id);
         })
       );
   }
 
+  getCurrentUserId(): number | null {
+    if (isPlatformBrowser(this.platformId)) {
+      const userId = localStorage.getItem('user_id');
+      return userId ? parseInt(userId, 10) : null;
+    }
+    return null;
+  }
+
   logout() {
-    localStorage.removeItem(this.tokenKey);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem(this.tokenKey);
+      localStorage.removeItem('user_id');
+    }
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem(this.tokenKey);
+    if (isPlatformBrowser(this.platformId)) {
+      const result = !!localStorage.getItem(this.tokenKey);
+      return result;
+    }
+    return false;
   }
 
   getToken(): string | null {
