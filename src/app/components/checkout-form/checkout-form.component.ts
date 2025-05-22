@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   selector: 'app-checkout-form',
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './checkout-form.component.html',
-  styleUrl: './checkout-form.component.css',
+  styleUrls: ['./checkout-form.component.css'],
 })
 export class CheckoutFormComponent {
   onSubmit() {
