@@ -36,4 +36,9 @@ export class CartService {
     });
   }
 
+  completeCurrentOrder() {
+    return this.http.patch(`${this.baseUrl}/complete-current-order`, {});
+
+  }
+
 }

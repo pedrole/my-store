@@ -5,10 +5,11 @@ import { Order } from '../../models/order';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { OrderItem } from '../../models/order-item';
+import { CheckoutFormComponent } from "../checkout-form/checkout-form.component";
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CheckoutFormComponent],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
