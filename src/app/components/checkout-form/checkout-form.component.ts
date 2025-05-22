@@ -8,7 +8,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
