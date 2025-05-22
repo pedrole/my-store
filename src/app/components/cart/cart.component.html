@@ -52,3 +52,7 @@
 <div *ngIf="cart?.products?.length === 0" class="text-center mt-5">
   <h4>Your cart is empty.</h4>
 </div>
+<app-checkout-form
+  *ngIf="(cart?.products?.length ?? 0) > 0"
+
+></app-checkout-form>
