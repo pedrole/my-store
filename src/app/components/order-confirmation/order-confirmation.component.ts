@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { parse } from 'node:path';
-
 @Component({
   selector: 'app-order-confirmation',
   imports: [],
