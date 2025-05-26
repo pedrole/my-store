@@ -9,8 +9,6 @@ import {
 } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
-import { parse } from 'node:path';
-
 @Component({
   selector: 'app-checkout-form',
   imports: [ReactiveFormsModule, CommonModule],
