@@ -5,4 +5,5 @@ export interface Order {
   user_id: number;
   status: string;
   products: OrderItem[];
+  total: number;
 }

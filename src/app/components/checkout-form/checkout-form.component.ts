@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
+import { parse } from 'node:path';
 
 @Component({
   selector: 'app-checkout-form',
@@ -24,8 +25,14 @@ export class CheckoutFormComponent {
         .subscribe({
           next: (response) => {
             console.log('Order completed successfully:', response);
-            this.router.navigate(['/']);
-            alert('Order completed successfully');
+            const navigationExtras = {
+              state: {
+                fullName: this.checkoutForm.value.fullName,
+                total: response.total, // Ensure total is a number
+              },
+            };
+            this.router.navigate(['/order-confirmation'], navigationExtras);
+            //alert('Order completed successfully');
           },
           error: (error) => {
             console.error('Error completing order:', error);
