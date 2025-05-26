@@ -6,7 +6,7 @@ import { parse } from 'node:path';
   selector: 'app-order-confirmation',
   imports: [],
   templateUrl: './order-confirmation.component.html',
-  styleUrl: './order-confirmation.component.css'
+  styleUrls: ['./order-confirmation.component.css']
 })
 export class OrderConfirmationComponent implements OnInit {
   @Input() fullName: string = '';
