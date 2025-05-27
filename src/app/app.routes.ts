@@ -9,7 +9,7 @@ export const routes: Routes = [
       import('./components/product-list/product-list.component').then(
         (m) => m.ProductListComponent
       ),
-    canActivate: [() => import('./guards/auth.guard').then((m) => m.AuthGuard)],
+
   },
   {
     path: 'login',
