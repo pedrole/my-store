@@ -1,59 +1,108 @@
-# MyStore
+# 🛒 MyStore - Angular E-commerce App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+This is **MyStore**, a responsive e-commerce web application built using Angular and Bootstrap. The application is part of the Udacity Full Stack JavaScript Developer Nanodegree and is designed to provide a full shopping experience, from browsing products to completing orders securely.
 
-## Development server
+![Shopping Flow](https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter/raw/main/shoppingflow.gif)
 
-To start a local development server, run:
+---
 
+## 🌟 Key Features
+
+- ✅ Browse a product catalog
+- 🛒 Add and remove products from a shopping cart
+- 📋 Fill in a checkout form with personal and payment details
+- ✅ Submit orders securely with backend integration
+- 🔐 JWT-based authentication and route protection
+- 📄 Order confirmation screen with summary and success message
+
+---
+
+## 📸 Screenshots
+
+### Product Listing
+
+![Product List](src/assets/screenshots/product-list.png)
+
+### Cart + Checkout
+
+![Cart and Checkout](src/assets/screenshots/cart-checkout.png)
+
+### Order Confirmation
+
+![Order Confirmation](src/assets/screenshots/order-confirmation.png)
+
+---
+
+## ⚙️ Backend Integration
+
+This project uses the custom REST API available at:
+
+🔗 [storefront-backend GitHub Repository](https://github.com/pedrole/storefront-backend)
+
+The backend provides:
+
+- JWT authentication
+- Endpoints to manage users, products, and orders
+- Secure order completion with ownership verification
+
+See:
+- [API Requirements](https://github.com/pedrole/storefront-backend/blob/master/REQUIREMENTS.md)
+- [API README](https://github.com/pedrole/storefront-backend/blob/master/README.md)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- Angular CLI (`npm install -g @angular/cli`)
+- PostgreSQL (for backend)
+- Backend running from [storefront-backend](https://github.com/pedrole/storefront-backend)
+
+---
+
+### 🔧 Installation
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/pedrole/my-store.git
+cd my-store
+```
+
+2. **Install depenmdencies**
+```bash
+npm install
+```
+
+3. **Serve the app**
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 🖥️ Backend Setup
+Clone and follow instructions here:
+👉 https://github.com/pedrole/storefront-backend
 
-## Code scaffolding
+Make sure the backend is running at http://localhost:3000.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 🔐 Authentication
+ - Login to receive a JWT stored in localStorage
+-  Authenticated users can:
 
-```bash
-ng generate component component-name
-```
+   - Add products to cart
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+   - View cart contents
 
-```bash
-ng generate --help
-```
+   - Checkout and complete their order
 
-## Building
+- Routes like /cart and /order-confirmation are protected
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Scripts
 
 ```bash
-ng test
+ng serve         # Dev server at localhost:4200
+ng build         # Build production version
+ng test          # Run unit tests
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
