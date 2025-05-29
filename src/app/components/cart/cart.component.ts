@@ -51,6 +51,10 @@ export class CartComponent implements OnInit {
     this.loadCart();
   }
 
+  trackByProductId(index: number, item: any): number {
+    return item.product_id;
+  }
+
   private loadCart(): void {
     console.log('CartComponent initialized');
 

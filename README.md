@@ -2,7 +2,7 @@
 
 This is **MyStore**, a responsive e-commerce web application built using Angular and Bootstrap. The application is part of the Udacity Full Stack JavaScript Developer Nanodegree and is designed to provide a full shopping experience, from browsing products to completing orders securely.
 
-![Shopping Flow](https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter/raw/main/shoppingflow.gif)
+![Shopping Flow](src/assets/screenshots/my-store.gif)
 
 ---
 
