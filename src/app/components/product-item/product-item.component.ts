@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/Product';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,20 +20,15 @@ export class ProductItemComponent {
     this.router.navigate(['/product', product.id]);
   }
   @Input() product!: Product;
+  @Output() addToCartEvent: EventEmitter<{ product: Product; quantity: number }> = new EventEmitter();
+
   quantity: number = 1;
 
-  addToCart(product: Product, quantity: number) {
-    console.log('Product added to cart:', product);
-
+  addToCart(event:Event ,product: Product, quantity: number) {
+    // Emit the addToCartEvent with product and quantity
     event?.stopPropagation();
-    this.cartService.addToCart(product.id, quantity).subscribe({
-      next: (response) => {
-        console.log('Product added to cart successfully:', response);
-        alert('Product added to cart successfully');
-      },
-      error: (error) => {
-        console.error('Error adding product to cart:', error);
-      },
-    });
+    this.addToCartEvent.emit({ product, quantity });
+
+
   }
 }
