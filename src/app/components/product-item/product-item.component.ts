@@ -24,23 +24,11 @@ export class ProductItemComponent {
 
   quantity: number = 1;
 
-  addToCart(product: Product, quantity: number) {
+  addToCart(event:Event ,product: Product, quantity: number) {
     // Emit the addToCartEvent with product and quantity
     event?.stopPropagation();
     this.addToCartEvent.emit({ product, quantity });
 
-    // Optionally, you can also handle the cart addition logic here
-   /*  console.log('Product added to cart:', product);
 
-
-    this.cartService.addToCart(product.id, quantity).subscribe({
-      next: (response) => {
-        console.log('Product added to cart successfully:', response);
-        alert('Product added to cart successfully');
-      },
-      error: (error) => {
-        console.error('Error adding product to cart:', error);
-      },
-    }); */
   }
 }
