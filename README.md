@@ -12,10 +12,20 @@ This is **MyStore**, a responsive e-commerce web application built using Angular
 - 🛒 Add and remove products from a shopping cart
 - 📋 Fill in a checkout form with personal and payment details
 - ✅ Submit orders securely with backend integration
-- 🔐 JWT-based authentication and route protection
+- 🔐 **Email-based authentication** with JWT tokens
 - 📄 Order confirmation screen with summary and success message
 
----
+## 🔐 Demo Credentials
+
+For quick testing and demonstration purposes, use these pre-seeded accounts:
+
+### Demo User
+- **Email**: `demo@example.com`
+- **Password**: `demo123`
+
+### Additional Test Users
+- **Email**: `jane.smith@example.com` | **Password**: `password123`
+- **Email**: `admin@example.com` | **Password**: `admin123`
 
 ## 📸 Screenshots
 
@@ -81,23 +91,30 @@ npm install
 ng serve
 ```
 
+Navigate to `http://localhost:4200`. The app will automatically reload if you change any of the source files.
+
 ### 🖥️ Backend Setup
 Clone and follow instructions here:
 👉 https://github.com/pedrole/storefront-backend
 
 Make sure the backend is running at http://localhost:3000.
 
-### 🔐 Authentication
- - Login to receive a JWT stored in localStorage
--  Authenticated users can:
+### 🔐 Authentication Flow
 
-   - Add products to cart
+1. **Login**: Use email + password (industry standard)
+2. **Registration**: Create new accounts with firstname, lastname, email, password
+3. **Demo Access**: One-click demo credentials for testing
+4. **JWT Tokens**: Secure authentication with automatic token management
+5. **Route Protection**: Cart and checkout require authentication
 
-   - View cart contents
+### 🛒 Shopping Flow
 
-   - Checkout and complete their order
+1. Browse products (no login required)
+2. Login or register to add items to cart
+3. View and modify cart contents
+4. Complete checkout form
+5. Receive order confirmation
 
-- Routes like /cart and /order-confirmation are protected
 
 ### Scripts
 
@@ -106,3 +123,19 @@ ng serve         # Dev server at localhost:4200
 ng build         # Build production version
 ng test          # Run unit tests
 ```
+
+## 📡 API Integration
+
+Connects to custom backend API with:
+- Email-based user authentication
+- JWT token management
+- Product catalog endpoints
+- Shopping cart and order management
+
+## 🎨 UI/UX Features
+
+- **Bootstrap 5** styling with responsive design
+- **Bootstrap Icons** for consistent iconography
+- **Form validation** with helpful error messages
+- **Demo credentials** prominently displayed for testing
+- **Login/Register toggle** for seamless user experience

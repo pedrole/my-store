@@ -1,45 +1,122 @@
 <div class="container">
-
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <h2>Login</h2>
-      <form (ngSubmit)="login()" #loginForm="ngForm">
-        <div class="form-group">
+
+      <!-- Demo Credentials Alert -->
+      <div class="alert alert-info" role="alert">
+        <h6 class="alert-heading">🎯 Demo Credentials</h6>
+        <p class="mb-2">For quick testing, use:</p>
+        <p class="mb-2"><strong>Email:</strong> demo&#64;example.com</p>
+        <p class="mb-2"><strong>Password:</strong> demo123</p>
+        <button type="button" class="btn btn-sm btn-outline-primary" (click)="useDemoCredentials()">
+          Use Demo Credentials
+        </button>
+      </div>
+
+      <h2>{{ isLoginMode ? 'Login' : 'Register' }}</h2>
+
+      <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+
+        <!-- Registration fields (only show in register mode) -->
+        <div *ngIf="!isLoginMode" class="form-group mb-3">
           <label for="firstname">First Name</label>
-          <input type="text" id="firstname" class="form-control" required [(ngModel)]="firstname" name="firstname"
-            #firstnameRef="ngModel">
-          <div *ngIf="firstnameRef.invalid && (firstnameRef.dirty || firstnameRef.touched)" class="alert alert-danger">
+          <input
+            type="text"
+            id="firstname"
+            class="form-control"
+            required
+            [(ngModel)]="firstname"
+            name="firstname"
+            #firstnameRef="ngModel"
+            minlength="2"
+            maxlength="20"
+            pattern="[A-Za-z]+"
+          >
+          <div *ngIf="firstnameRef.invalid && (firstnameRef.dirty || firstnameRef.touched)" class="alert alert-danger mt-2">
             <div *ngIf="firstnameRef.errors?.['required']">First Name is required.</div>
             <div *ngIf="firstnameRef.errors?.['minlength']">First Name must be at least 2 characters long.</div>
             <div *ngIf="firstnameRef.errors?.['maxlength']">First Name cannot be more than 20 characters long.</div>
             <div *ngIf="firstnameRef.errors?.['pattern']">First Name must contain only letters.</div>
           </div>
         </div>
-        <div class="form-group">
+
+        <div *ngIf="!isLoginMode" class="form-group mb-3">
           <label for="lastname">Last Name</label>
-          <input type="text" id="lastname" class="form-control" required [(ngModel)]="lastname" name="lastname"  (ngModelChange)="debugLastName($event)"
-            #lastnameRef="ngModel">
-          <div *ngIf="lastnameRef.invalid && (lastnameRef.dirty || lastnameRef.touched)" class="alert alert-danger">
+          <input
+            type="text"
+            id="lastname"
+            class="form-control"
+            required
+            [(ngModel)]="lastname"
+            name="lastname"
+            #lastnameRef="ngModel"
+            minlength="2"
+            maxlength="20"
+            pattern="[A-Za-z]+"
+          >
+          <div *ngIf="lastnameRef.invalid && (lastnameRef.dirty || lastnameRef.touched)" class="alert alert-danger mt-2">
             <div *ngIf="lastnameRef.errors?.['required']">Last Name is required.</div>
             <div *ngIf="lastnameRef.errors?.['minlength']">Last Name must be at least 2 characters long.</div>
             <div *ngIf="lastnameRef.errors?.['maxlength']">Last Name cannot be more than 20 characters long.</div>
             <div *ngIf="lastnameRef.errors?.['pattern']">Last Name must contain only letters.</div>
           </div>
         </div>
-        <div class="form-group">
+
+        <!-- Email field (always show) -->
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            required
+            [(ngModel)]="email"
+            name="email"
+            #emailRef="ngModel"
+            email
+          >
+          <div *ngIf="emailRef.invalid && (emailRef.dirty || emailRef.touched)" class="alert alert-danger mt-2">
+            <div *ngIf="emailRef.errors?.['required']">Email is required.</div>
+            <div *ngIf="emailRef.errors?.['email']">Please enter a valid email address.</div>
+          </div>
+        </div>
+
+        <!-- Password field (always show) -->
+        <div class="form-group mb-3">
           <label for="password">Password</label>
-          <input type="password" id="password" class="form-control" required [(ngModel)]="password" name="password"
-            #passwordRef="ngModel">
-          <div *ngIf="passwordRef.invalid && (passwordRef.dirty || passwordRef.touched)" class="alert alert-danger">
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            required
+            [(ngModel)]="password"
+            name="password"
+            #passwordRef="ngModel"
+            minlength="6"
+            maxlength="20"
+          >
+          <div *ngIf="passwordRef.invalid && (passwordRef.dirty || passwordRef.touched)" class="alert alert-danger mt-2">
             <div *ngIf="passwordRef.errors?.['required']">Password is required.</div>
             <div *ngIf="passwordRef.errors?.['minlength']">Password must be at least 6 characters long.</div>
             <div *ngIf="passwordRef.errors?.['maxlength']">Password cannot be more than 20 characters long.</div>
-            <div *ngIf="passwordRef.errors?.['pattern']">Password must contain at least one uppercase letter, one lowercase
-              letter,
-              one number, and one special character.</div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+
+        <button
+          type="submit"
+          class="btn btn-primary me-2"
+          [disabled]="authForm.invalid"
+        >
+          {{ isLoginMode ? 'Login' : 'Register' }}
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="toggleMode()"
+        >
+          {{ isLoginMode ? 'Need an account? Register' : 'Have an account? Login' }}
+        </button>
       </form>
     </div>
   </div>

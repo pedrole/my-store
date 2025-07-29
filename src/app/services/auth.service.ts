@@ -17,8 +17,7 @@ export class AuthService {
   ) {}
 
   login(credentials: {
-    firstname: string;
-    lastname: string;
+    email: string;
     password: string;
   }) {
     return this.http
@@ -26,6 +25,25 @@ export class AuthService {
         id: string;
         token: string;
       }>(`${this.apiUrl}/users/login`, credentials)
+      .pipe(
+        tap((res) => {
+          this.setToken(res.token);
+          localStorage.setItem('user_id', res.id);
+        })
+      );
+  }
+
+  register(userData: {
+    firstname: string;
+    lastname: string;
+    email: string;
+    password: string;
+  }) {
+    return this.http
+      .post<{
+        id: string;
+        token: string;
+      }>(`${this.apiUrl}/users`, userData)
       .pipe(
         tap((res) => {
           this.setToken(res.token);
