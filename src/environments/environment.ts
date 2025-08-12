@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'https://storefront-backend-0i3t.onrender.com',
   production: true
 };
