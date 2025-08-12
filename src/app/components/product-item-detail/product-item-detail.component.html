@@ -4,9 +4,9 @@
       (error)="product.image = '/320x480.png'"
     alt="Product Image" class="img">
   <div class="detail-item">
-    <h2>{{ product?.name }}</h2>
-    <p>Price: {{ product?.price | currency }}</p>
-    <p>Description: {{ product?.name }}</p>
+    <h2>{{ product.name }}</h2>
+    <p>Price: {{ product.price | currency }}</p>
+    <p>Description: {{ product.name }}</p>
 
     <select id="quantity" [(ngModel)]="quantity" class="select-input form-select">
       <option *ngFor="let qty of [1, 2, 3, 4, 5]" [value]="qty">{{ qty }}</option>
